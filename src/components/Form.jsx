@@ -12,6 +12,7 @@ export const Form = () => {
 
   const [errors, setErrors] = useState({});
 
+
   const handleChange = (e) => {
     const { name, value, type } = e.target;
 
@@ -32,6 +33,9 @@ export const Form = () => {
 
     if (!formData.name.trim()) {
       newErrors.name = "โปรดใส่ชื่อของคุณ";
+    }
+    if (!formData.movie) {
+      newErrors.movie = "กรุณาเลือกหนังที่คุณชอบ";
     }
     if (!formData.email.trim()) {
       newErrors.email = "โปรดใส่อีเมลของคุณ";
@@ -160,6 +164,11 @@ export const Form = () => {
                         onChange={handleChange}
                         className="h-4 w-4 cursor-pointer"
                       />
+                      {errors.movie && (
+                        <p className="text-sm text-red-500 mt-1">
+                          {errors.movie}
+                        </p>
+                      )}
                       <div className="grid gap-1 mt-3">
                         <span className="text-sm">
                           {movie.title} ({movie.year})
